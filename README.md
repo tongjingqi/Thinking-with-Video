@@ -95,14 +95,14 @@ The table below summarizes the accuracy (%) of Sora-2 compared with state-of-the
 | | Eyeballing-Shape | 34.5 | 34.5 | 32.5 | 50.5 |
 | | Visual-Color | 67.0 | 73.9 | 79.6 | 85.6 |
 | | Visual-Shape | 64.9 | 92.9 | 97.5 | 68.6 |
-| | ARC-AGI-2 | 1.3 | 4.9 | 9.9 | 13.6 |
-| | **Average** | **41.7** | **42.5** | **46.2** | **46.8** |
+| | ARC-AGI-2 | 1.3 | 1.9 | 0.5 | 5.3 |
+| | **Average** | **41.7** | **42.0** | **44.6** | **45.4** |
 | **Text-Centric** | Text-Only Math | 53.6 | 94.8 | 97.2 | 90.0 |
 | | Text-Only General Knowledge | 63.1 | 84.5 | 85.2 | 86.3 |
 | | Multimodal Math | 56.3 | 66.7 | 69.6 | 65.6 |
 | | Multimodal General Knowledge | 49.4 | 83.0 | 80.6 | 82.3 |
 | | **Average** | **55.6** | **82.3** | **83.2** | **81.1** |
-| **Overall Average** | | **47.3** | **58.4** | **61.0** | **60.5** |
+| **Overall Average** | | **47.3** | **58.1** | **60.0** | **59.7** |
 
 **Note**: For Sora-2: Eyeballing Puzzles use Major Frame evaluation; Visual Puzzles show the average of Color-Filling and Shape-Drawing tasks; Text-Centric Reasoning tasks use Video evaluation results.
 
