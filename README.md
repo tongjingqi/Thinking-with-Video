@@ -55,7 +55,7 @@ Moving beyond the traditional paradigms of "Thinking with Text" (e.g., Chain-of-
 
 
 ## Installation
-*Currently, only vision-centric tasks excluding Visual Puzzles (which includes Eyeballing Puzzles, Mazes and ARC-AGI-2) are available. They are all under VisualCentric/ submodule.*
+*Currently, only Eyeballing Puzzles, Mazes and ARC-AGI-2 (vision-centric tasks excluding Visual Puzzles) are available. They are all under VisualCentric/ submodule.*
 
 1. Clone this repository and navigate to Thinking-with-Video folder
 ```bash
