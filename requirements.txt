@@ -1,0 +1,7 @@
+numpy
+Pillow
+requests
+pytesseract
+opencv-python
+openai
+python-dotenv

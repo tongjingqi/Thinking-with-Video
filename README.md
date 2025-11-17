@@ -14,6 +14,12 @@
 
 </div>
 
+<div align="center">
+  <a href="https://huggingface.co/papers/week/2025-W45">
+    <img src="assets/huggingface_paper_gold_week.svg"/>
+  </a>
+</div>
+
 ## 🎊 News <!-- omit in toc -->
 
 - [2025.11.07] Our paper "Thinking with Video: Video Generation as a Promising Multimodal Reasoning Paradigm" has been released on arXiv! 📄 [[Paper](https://arxiv.org/abs/2511.04570)]
@@ -49,15 +55,18 @@ Moving beyond the traditional paradigms of "Thinking with Text" (e.g., Chain-of-
 
 
 ## Installation
+*Currently, only Eyeballing Puzzles, Mazes and ARC-AGI-2 (vision-centric tasks excluding Visual Puzzles) are available. They are all under VisualCentric/ submodule.*
 
 1. Clone this repository and navigate to Thinking-with-Video folder
 ```bash
-git clone https://github.com/YOUR_USERNAME/Thinking-with-Video.git
+git clone https://github.com/tongjingqi/Thinking-with-Video.git
 cd Thinking-with-Video
 ```
 
 2. Install dependencies
 ```bash
+conda create -y -n thinking_with_video python==3.12
+conda activate thinking_with_video
 pip install -r requirements.txt
 ```
 *(Coming soon)*
@@ -161,6 +170,12 @@ If you find our work helpful, please consider citing our paper 📝 and starring
     year={2025}
 }
 ```
+
+---
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=tongjingqi/Thinking-with-Video&type=date&legend=top-left)](https://www.star-history.com/#tongjingqi/Thinking-with-Video&type=date&legend=top-left)
 
 ---
 
