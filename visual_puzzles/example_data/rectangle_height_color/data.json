@@ -1,0 +1,19 @@
+[
+  {
+    "question": "What is the missing color of the part denoted with a question mark?",
+    "answer": "red",
+    "options": [
+      "red",
+      "purple",
+      "orange",
+      "green"
+    ],
+    "caption": "There are 7 rectangles in the image with varying colors and lengths. The lengths from left to right are ['short', 'short', 'long', 'long', 'medium', 'medium', 'short']. The colors from left to right are ['red', 'red', 'purple', 'purple', 'orange', 'orange', '?'].",
+    "explanation": "We observe that the purple rectangles are of long length and the orange rectangles are of medium length. Hence, the pattern is that the color of each rectangle corresponds to its length.",
+    "deduction": "Based on the pattern that the color of each rectangle corresponds to its length, the missing color of the part denoted with a question mark should be red.",
+    "id": "rectangle_height_color-00",
+    "prompt": "What is the missing color of the part denoted with a question mark? This part should be completely filled with the correct color while the other parts should be unchanged. The question mark disappears. Then nothing happens and the scene remains static. Do not zoom in or out, or change the positions of the shapes.",
+    "image": "puzzles/00.png",
+    "solution_image_path": "solutions/00.png"
+  }
+]

@@ -1,0 +1,19 @@
+[
+  {
+    "question": "What is the missing color of the part denoted with a question mark?",
+    "answer": "blue",
+    "options": [
+      "yellow",
+      "blue",
+      "purple",
+      "green"
+    ],
+    "caption": "There are 3 squares which overlap each other in the image. The color of the squares are ['?', 'yellow', 'red']. The part where the first and second squares overlap is green. The part where the second and third squares overlap is orange.",
+    "explanation": "We observe that the yellow and red squares overlap to form orange. Hence, the pattern is that the color of the part where two squares overlap is determined by mixing the two colors.",
+    "deduction": "Based on the pattern that the color of the part where two squares overlap is determined by mixing the two colors, the missing color of the part which overlaps with yellow to form green should be blue.",
+    "id": "color_overlap_squares-00",
+    "prompt": "What is the missing color of the part denoted with a question mark? This part should be completely filled with the correct color while the other parts should be unchanged. The question mark disappears. Then nothing happens and the scene remains static. Do not zoom in or out, or change the positions of the shapes.",
+    "image": "puzzles/00.png",
+    "solution_image_path": "solutions/00.png"
+  }
+]

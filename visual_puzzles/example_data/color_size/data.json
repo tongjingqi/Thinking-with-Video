@@ -1,0 +1,19 @@
+[
+  {
+    "question": "What is the missing color of the part denoted with a question mark?",
+    "answer": "dark red",
+    "options": [
+      "light red",
+      "light orange",
+      "dark red",
+      "dark blue"
+    ],
+    "caption": "There are pentagons of various sizes and colors in the image. The pentagons are ['large', 'medium', 'small', 'extra large'] size, and their colors are ['light red', 'medium red', '?', 'very light red'].",
+    "explanation": "We observe that the largest pentagon is very light red color, and the smaller pentagons change color from light red to medium red. Hence, the pattern is that the pentagons become darker as they become smaller.",
+    "deduction": "Based on the pattern that the pentagons become darker as they become smaller, the missing color of the smallest pentagon denoted with a question mark should be dark red.",
+    "id": "color_size-00",
+    "prompt": "What is the missing color of the part denoted with a question mark? This part should be completely filled with the correct color (not white or the original grey) to match the pattern in the image while the other parts should be unchanged. The question mark disappears. Then nothing happens and the scene remains static. Do not zoom in or out, or change the positions of the shapes.",
+    "image": "puzzles/00.png",
+    "solution_image_path": "solutions/00.png"
+  }
+]

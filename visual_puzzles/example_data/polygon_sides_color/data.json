@@ -1,0 +1,19 @@
+[
+  {
+    "question": "What is the missing color of the part denoted with a question mark?",
+    "answer": "yellow",
+    "options": [
+      "purple",
+      "blue",
+      "yellow",
+      "red"
+    ],
+    "caption": "There are 6 colored polygons arranged in a triangle with color ['orange'] in the top row, ['?', 'green'] in the middle row, and ['yellow', 'green', 'orange'] in the bottom row.",
+    "explanation": "We observe that the polygon with 5 sides is green in color and the polygon with 6 sides is orange in color. Thus, the pattern is that the polygons with the same number of sides have the same color.",
+    "deduction": "Based on the pattern that the polygons with the same number of sides have the same color, the missing color of the part with 7 sides should be yellow.",
+    "id": "polygon_sides_color-00",
+    "prompt": "What is the missing color of the part denoted with a question mark? This part should be completely filled with the correct color while the other parts should be unchanged. The question mark disappears. Then nothing happens and the scene remains static. Do not zoom in or out, or change the positions of the shapes.",
+    "image": "puzzles/00.png",
+    "solution_image_path": "solutions/00.png"
+  }
+]

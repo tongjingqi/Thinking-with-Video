@@ -1,0 +1,19 @@
+[
+  {
+    "question": "What is the color of the missing part denoted with a question mark?",
+    "answer": "red",
+    "options": [
+      "yellow",
+      "orange",
+      "red",
+      "green"
+    ],
+    "caption": "There are circles with different colors arranged with a grid formation in the image. The colors in the first row are ['purple', 'red', 'purple'], the colors in the second row are ['red', 'yellow', '?'], and the colors in the third row are ['purple', 'red', 'purple'].",
+    "explanation": "We observe that the circles at the corners are purple, while the circles directly adjacent to the center are red. Only the center circle is yellow. Hence, the pattern is that the circles alternate in color depending on if they are at the corner or adjacent to the center.",
+    "deduction": "Based on the pattern that the circles alternate in color depending on if they are at the corner or adjacent to the center, the missing color of the part that is adjacent to the center should be red.",
+    "id": "color_grid-00",
+    "prompt": "What is the color of the missing part denoted with a question mark? This part should be completely filled with the correct color while the other parts should be unchanged. The question mark disappears. Then nothing happens and the scene remains static. Do not zoom in or out, or change the positions of the shapes.",
+    "image": "puzzles/00.png",
+    "solution_image_path": "solutions/00.png"
+  }
+]

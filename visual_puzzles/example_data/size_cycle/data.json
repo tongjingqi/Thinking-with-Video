@@ -1,0 +1,18 @@
+[
+  {
+    "question": "What is the size of the missing circle denoted with a question mark?",
+    "answer": "large",
+    "options": [
+      "medium",
+      "small",
+      "large"
+    ],
+    "caption": "There are circles arranged in a spiral with three arms. The first arm has circles of sizes ['small', 'medium', '?'], the second arm has circles of sizes ['small', 'medium', 'large'], and the third arm has circles of sizes ['small', 'medium', 'large'].",
+    "explanation": "We observe that the circles in each arm progress in size from small to medium to large. Thus, the pattern is that the circles in each arm get bigger as they progress away from the center of the spiral.",
+    "deduction": "Based on the pattern that the circles in each arm get bigger as they progress away from the center of the spiral, the size of the missing part that is farthest from center should be large.",
+    "id": "size_cycle-00",
+    "prompt": "What is the size of the missing circle denoted with a question mark? The question mark part should be replaced with the correct circle while the other circles should be unchanged. The question mark disappears. Then nothing happens and the scene remains static. Do not zoom in or out, or change the positions of the shapes.",
+    "image": "puzzles/00.png",
+    "solution_image_path": "solutions/00.png"
+  }
+]

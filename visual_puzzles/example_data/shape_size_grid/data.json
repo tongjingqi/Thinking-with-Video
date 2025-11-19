@@ -1,0 +1,18 @@
+[
+  {
+    "question": "What is the size of the missing part denoted by a question mark?",
+    "answer": "large",
+    "options": [
+      "small",
+      "large",
+      "medium"
+    ],
+    "caption": "There are 9 shapes arranged in a grid with different sizes in the image, of which there is 1 missing shape. The first row is ['small square', 'medium square', '?'], the second row is ['small pentagon', 'medium pentagon', 'large pentagon'], and the third row is ['small triangle', 'medium triangle', 'large triangle'].",
+    "explanation": "We observe that the columns contain small shapes, medium shapes, and large shapes respectively. On the other hand, the rows contain squares, pentagons, and triangles respectively. Hence, the pattern is that the shapes within each row are the same, while each column progresses the size of the shapes.",
+    "deduction": "Based on the pattern that the shapes within each row are the same, while each column progresses the size of the shapes, the size of the missing square should be large.",
+    "id": "shape_size_grid-00",
+    "prompt": "What is the size of the missing part denoted by a question mark? This part should be replaced with the correct shape while the other shapes should be unchanged. The question mark disappears. Then nothing happens and the scene remains static. Do not zoom in or out, or change the positions of the shapes.",
+    "image": "puzzles/00.png",
+    "solution_image_path": "solutions/00.png"
+  }
+]

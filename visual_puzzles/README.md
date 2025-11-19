@@ -15,8 +15,18 @@ cp -r VideoThinkBench/Vision-Centric_Reasoning/visual_puzzles/* visual_puzzles/d
 bash scripts/run.sh
 ```
 
-## Generate New Data
+## Select the Best Frame for Manual Evaluation
+
+```bash
+bash scripts/extract_best_frame.sh
+```
+
+## Generate New Data by Yourself
 
 ```bash
 bash scripts/gen.sh
 ```
+
+## Acknowledgements
+
+The data generation code is adapted from the [PuzzleVQA](https://github.com/declare-lab/LLM-PuzzleTest).

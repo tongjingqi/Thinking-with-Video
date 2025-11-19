@@ -1,0 +1,19 @@
+[
+  {
+    "question": "What is the missing shape denoted by a question mark?",
+    "answer": "square",
+    "options": [
+      "hexagon",
+      "square",
+      "pentagon",
+      "triangle"
+    ],
+    "caption": "There are six shapes in the image separated by a line. In the top part there are ['triangle', 'pentagon', '?']. In the bottom part there are ['triangle', 'pentagon', 'square'].",
+    "explanation": "We observe that the pentagon is reflected across the line as a pentagon. Similarly, the square is reflected as a square. Hence, the pattern is that each shape in the top part is reflected in the bottom part.",
+    "deduction": "Based on the pattern that each shape in the top part is reflected in the bottom part, the missing shape which is reflected from a square part should be a square.",
+    "id": "shape_reflect-00",
+    "prompt": "What is the missing shape denoted by a question mark? The question mark area should be replaced with the correct shape while the other shapes should be unchanged. The question mark disappears. Then nothing happens and the scene remains static. Do not zoom in or out, or change the positions of the shapes.",
+    "image": "puzzles/00.png",
+    "solution_image_path": "solutions/00.png"
+  }
+]

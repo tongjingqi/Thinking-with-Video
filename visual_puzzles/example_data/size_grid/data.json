@@ -1,0 +1,18 @@
+[
+  {
+    "question": "What is the size of the missing part denoted with a question mark?",
+    "answer": "medium",
+    "options": [
+      "medium",
+      "small",
+      "large"
+    ],
+    "caption": "There are circles arranged in a grid formation with varying sizes in the image. The sizes in the first row are ['large', 'medium', 'large'], the sizes in the second row are ['medium', 'small', '?'], and the sizes in the third row are ['large', 'medium', 'large'].",
+    "explanation": "We observe that the circles at the corners are large size, while the circles directly adjacent to the center are medium size. Only the center circle is small size. Hence, the pattern is that the circles alternate in size depending on if they are at the corner or adjacent to the center.",
+    "deduction": "Based on the pattern that the circles alternate in size depending on if they are at the corner or adjacent to the center, the size of the missing part that is adjacent to the center should be medium.",
+    "id": "size_grid-00",
+    "prompt": "What is the size of the missing part denoted with a question mark? This part should be replaced with the correct circle while the other circles should be unchanged. The question mark disappears. Then nothing happens and the scene remains static. Do not zoom in or out, or change the positions of the shapes.",
+    "image": "puzzles/00.png",
+    "solution_image_path": "solutions/00.png"
+  }
+]
