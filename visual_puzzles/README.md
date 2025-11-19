@@ -8,6 +8,7 @@ Download the benchmark data first, see the main [README.md](../README.md) for in
 # under the Thinking-with-Video root directory
 mkdir -p visual_puzzles/data
 cp -r VideoThinkBench/Vision-Centric_Reasoning/visual_puzzles/* visual_puzzles/data
+cd visual_puzzles
 ```
 
 ## Test Sora-2
@@ -25,7 +26,7 @@ bash scripts/extract_best_frame.sh
 ## Generate New Data by Yourself
 
 ```bash
-bash scripts/gen.sh
+bash scripts/generate_data.sh
 ```
 
 ## Acknowledgements
