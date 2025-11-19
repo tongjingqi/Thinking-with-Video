@@ -6,6 +6,7 @@ Download the benchmark data first, see the main [README.md](../README.md) for in
 
 ```bash
 # under the Thinking-with-Video root directory
+mkdir -p visual_puzzles/data
 cp -r VideoThinkBench/Vision-Centric_Reasoning/visual_puzzles/* visual_puzzles/data
 ```
 
