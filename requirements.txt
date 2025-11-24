@@ -8,3 +8,5 @@ python-dotenv
 huggingface_hub
 httpx[socks]
 fire
+python-dotenv
+moviepy

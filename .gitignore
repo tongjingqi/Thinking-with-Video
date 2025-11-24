@@ -1,3 +1,5 @@
-VideoThinkBench/
+__pycache__
+.env
+VideoThinkBench
 visual_puzzles/data/
 visual_puzzles/output/
