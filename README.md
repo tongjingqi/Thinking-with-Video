@@ -48,17 +48,15 @@ Moving beyond the traditional paradigms of "Thinking with Text" (e.g., Chain-of-
 
 ## 📌 Contents <!-- omit in toc -->
 
-- [Installation](#installation)
+- [Installation and Dataset Download](#installation-and-dataset-download)
 - [VideoThinkBench](#videothinkbench)
+- [Code and Evaluation](#code-and-evaluation)
 - [Benchmark Results](#benchmark-results)
-- [Evaluation](#evaluation)
 - [Takeaways](#takeaways)
 - [Citation](#citation)
-- [Contact](#contact)
 
 
 ## Installation and Dataset Download <!-- omit in toc -->
-*Currently, only Eyeballing Puzzles, Mazes and ARC-AGI-2 (vision-centric tasks excluding Visual Puzzles) are available. They are all under VisualCentric/ submodule.*
 
 1. Clone this repository and navigate to Thinking-with-Video folder
    ```bash
@@ -106,6 +104,18 @@ Adapted from established benchmarks including:
 Dataset is available on [Hugging Face](https://huggingface.co/datasets/fnlp/VideoThinkBench).
 
 
+## Code and Evaluation
+
+### Vision-Centric Tasks
+
+- **Eyeballing Puzzles, Mazes, ARC-AGI-2**: [`VisionCentric/`](./VisionCentric)
+- **Visual Puzzles**: [`visual_puzzles/`](./visual_puzzles)
+
+### Text-Centric Tasks
+
+- **All Text-Centric Tasks**: [`TextCentric/`](./TextCentric)
+
+
 ## Benchmark Results
 
 ### Performance Comparison Across All Tasks
@@ -129,21 +139,6 @@ The table below summarizes the accuracy (%) of Sora-2 compared with state-of-the
 | **Overall Average** | | **47.3** | **58.1** | **60.0** | **59.7** |
 
 **Note**: For Sora-2: Eyeballing Puzzles use Major Frame evaluation; Visual Puzzles show the average of Color-Filling and Shape-Drawing tasks; Text-Centric Reasoning tasks use Video evaluation results.
-
-
-## Evaluation
-
-### Benchmark Evaluation Scripts
-
-```bash
-# Vision-centric tasks evaluation
-python eval_vision_centric.py --task eyeballing
-
-# Text-centric tasks evaluation
-python eval_text_centric.py --benchmark MATH
-```
-
-**Coming Soon**: We are preparing comprehensive evaluation scripts for all tasks in VideoThinkBench. Stay tuned!
 
 
 ## Takeaways
