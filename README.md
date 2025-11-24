@@ -108,7 +108,7 @@ Dataset is available on [Hugging Face](https://huggingface.co/datasets/fnlp/Vide
 
 ### Vision-Centric Tasks
 
-- **Eyeballing Puzzles, Mazes, ARC-AGI-2**: [`VisionCentric/`](./VisionCentric)
+- **Eyeballing Puzzles, Mazes, ARC-AGI-2**: [`VisionCentric/`](https://github.com/betmma/VLMPuzzle) (submodule)
 - **Visual Puzzles**: [`visual_puzzles/`](./visual_puzzles)
 
 ### Text-Centric Tasks
