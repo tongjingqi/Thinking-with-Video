@@ -3,3 +3,4 @@ __pycache__
 VideoThinkBench
 visual_puzzles/data/
 visual_puzzles/output/
+visual_puzzles/vlm_output/

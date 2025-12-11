@@ -118,6 +118,23 @@ This script evaluates each frame in the generated videos and selects the one clo
 1. **Color-Filling Tasks**: Uses RGB Euclidean distance to compare pixel-wise color similarity
 2. **Shape-Drawing Tasks**: Uses coverage difference after binarization to compare shape accuracy
 
+### Evaluating Vision-Language Models (VLMs)
+
+We now provide `infer/test_VLM.py`  to batch-query VLMs on the visual puzzle tasks.
+
+The companion script `scripts/run_VLM.sh` runs two batches: one that sends the baseline tasks and another that appends the available `options` lists when requested (via `--provide_options`). Each batch saves results under `vlm_output/<mode>/<model_timestamp>/result.json`.
+
+Key CLI flags for `test_VLM.py`:
+- `--model`: Name of the VLM endpoint to call
+- `--base_url`: Inference service URL
+- `--tasks`: List of puzzle tasks to evaluate (each task folder must contain `data.json`)
+- `--data_root`: Path containing the task directories (defaults to `data`)
+- `--output_root`: Directory to hold structured output (metadata + entries in `result.json`)
+- `--threads`, `--max_request_attempts`, `--request_attempt_delay`: Control concurrency and retry timing (mirrors video script defaults)
+- `--provide_options`: Use this flag to append `Options: ...` text for question answering
+
+The runner logs per-task accuracy into each `result.json` and includes an `is_correct` flag on every entry, making it easy to aggregate VLM performance.
+
 ### Generating Custom Data
 
 Create new puzzle instances for creating your own dataset.
