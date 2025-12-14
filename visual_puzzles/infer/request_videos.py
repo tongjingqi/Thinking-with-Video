@@ -6,13 +6,24 @@ import os
 import re
 import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
+from dataclasses import dataclass
 from pathlib import Path
-from typing import Dict, List, Optional, Tuple
+from typing import Callable, Dict, List, Optional, Tuple
 
 from dotenv import load_dotenv
 from openai import OpenAI
 from tqdm import tqdm
 import requests
+
+
+@dataclass(frozen=True)
+class DirectRequestConfig:
+	base_url: str
+	api_key: str
+	model_name: str
+	request_timeout: float
+	poll_interval: float
+	max_poll_attempts: int
 
 
 def parse_args() -> argparse.Namespace:
@@ -27,10 +38,34 @@ def parse_args() -> argparse.Namespace:
 	parser.add_argument("--threads", type=int, default=4, help="Thread pool size for requests/downloads")
 	parser.add_argument("--max_request_attempts", type=int, default=1, help="Maximum attempts per video request")
 	parser.add_argument(
+		"--request_mode",
+		choices=("chat", "direct"),
+		default="chat",
+		help="Use 'chat' for chat.completions (default) or 'direct' for the custom video API",
+	)
+	parser.add_argument(
 		"--request_attempt_delay",
 		type=float,
 		default=0.0,
 		help="Seconds to wait between request attempts",
+	)
+	parser.add_argument(
+		"--direct_poll_interval",
+		type=float,
+		default=5.0,
+		help="Seconds between status polls when --request_mode=direct",
+	)
+	parser.add_argument(
+		"--direct_max_poll_attempts",
+		type=int,
+		default=60,
+		help="Maximum poll attempts per video task when --request_mode=direct",
+	)
+	parser.add_argument(
+		"--direct_request_timeout",
+		type=float,
+		default=60.0,
+		help="HTTP timeout in seconds when --request_mode=direct",
 	)
 	return parser.parse_args()
 
@@ -73,6 +108,92 @@ def build_messages(text_prompt: str, image_base64: Optional[str]) -> List[Dict[s
 			}
 		)
 	return [{"role": "user", "content": content}]
+
+
+def build_direct_payload(prompt_value: str, model_name: str, image_b64: Optional[str]) -> Dict[str, object]:
+	images: List[str] = []
+	if image_b64:
+		images.append(image_b64 if image_b64.startswith("data:") else f"data:image/png;base64,{image_b64}")
+	return {
+		"prompt": prompt_value,
+		"model": model_name,
+		"images": images,
+	}
+
+
+def _direct_headers(config: DirectRequestConfig) -> Dict[str, str]:
+	return {
+		"Authorization": f"Bearer {config.api_key}",
+		"Content-Type": "application/json",
+	}
+
+
+def _build_direct_url(base_url: str, path: str) -> str:
+	return f"{base_url.rstrip('/')}{path}"
+
+
+def send_direct_request(config: DirectRequestConfig, payload: Dict[str, object]) -> str:
+	url = _build_direct_url(config.base_url, "/video/create")
+	response = requests.post(url, json=payload, headers=_direct_headers(config), timeout=config.request_timeout)
+	response.raise_for_status()
+	response_json = response.json()
+	task_id = response_json.get("id") or response_json.get("task_id")
+	if not task_id:
+		raise ValueError("Direct request did not return a task id")
+	return str(task_id)
+
+
+def poll_direct_status(config: DirectRequestConfig, task_id: str) -> str:
+	url = _build_direct_url(config.base_url, "/video/query")
+	params = {"id": task_id}
+	for attempt in range(1, config.max_poll_attempts + 1):
+		if attempt > 1:
+			time.sleep(config.poll_interval)
+		response = requests.get(
+			url,
+			headers={"Authorization": f"Bearer {config.api_key}"},
+			params=params,
+			timeout=config.request_timeout,
+		)
+		response.raise_for_status()
+		payload = response.json()
+		status_value = payload.get("status") or payload.get("state")
+		status = status_value.lower() if isinstance(status_value, str) else ""
+		if status == "completed":
+			video_url = payload.get("video_url")
+			if not video_url:
+				raise ValueError(f"Task {task_id} completed without video_url")
+			return str(video_url)
+		if status in {"failed", "error"}:
+			raise RuntimeError(f"Task {task_id} failed with status {status_value}")
+	raise TimeoutError(
+		f"Task {task_id} did not reach 'completed' within {config.max_poll_attempts} polls"
+	)
+
+
+def request_entry_direct(
+	entry: Dict[str, object],
+	dataset_dir: Path,
+	include_image: bool,
+	config: DirectRequestConfig,
+) -> str:
+	entry_id = entry.get("id") or entry.get("index") or entry.get("question_id")
+	prefix = f"Entry {entry_id}" if entry_id is not None else "Entry"
+	prompt_value = entry.get("prompt") if isinstance(entry, dict) else None
+	if not prompt_value or not isinstance(prompt_value, str):
+		raise ValueError(f"{prefix}: missing prompt field")
+	image_b64: Optional[str] = None
+	if include_image:
+		image_path = resolve_image_path(entry, dataset_dir)
+		if image_path:
+			image_b64 = image_to_base64(image_path)
+		else:
+			logging.warning("%s: image path %r could not be resolved", prefix, entry.get("image"))
+	payload = build_direct_payload(prompt_value, config.model_name, image_b64)
+	logging.debug("%s: sending direct request", prefix)
+	task_id = send_direct_request(config, payload)
+	print(task_id)
+	return poll_direct_status(config, task_id)
 
 
 def request_entry(
@@ -118,12 +239,13 @@ def request_entry(
 def request_entries_for_indices(
 	entries: List[Dict[str, object]],
 	indices: List[int],
-	client: OpenAI,
+	client: Optional[OpenAI],
 	model_name: str,
 	dataset_dir: Path,
 	include_image: bool,
 	threads: int,
 	attempt_label: str,
+	request_callable: Optional[Callable[[int], str]] = None,
 ) -> Tuple[Dict[int, str], Dict[int, str]]:
 	results: Dict[int, str] = {}
 	errors: Dict[int, str] = {}
@@ -131,16 +253,22 @@ def request_entries_for_indices(
 	if not indices:
 		return results, errors
 
+	def default_request_callable(idx: int) -> str:
+		if client is None:
+			raise RuntimeError("OpenAI client is required when request_mode='chat'")
+		return request_entry(
+			client,
+			model_name,
+			entries[idx],
+			dataset_dir,
+			include_image,
+		)
+
+	submit_request = request_callable or default_request_callable
+
 	with ThreadPoolExecutor(max_workers=threads) as executor:
 		future_to_index = {
-			executor.submit(
-				request_entry,
-				client,
-				model_name,
-				entries[idx],
-				dataset_dir,
-				include_image,
-			): idx
+			executor.submit(submit_request, idx): idx
 			for idx in indices
 		}
 		progress = tqdm(total=len(future_to_index), desc=attempt_label, unit="req")
@@ -273,8 +401,10 @@ def process_task(
 	entries: List[Dict[str, object]],
 	dataset_path_obj: Path,
 	task_dirs: Dict[str, Path],
-	request_client: OpenAI,
+	request_client: Optional[OpenAI],
 	request_model: str,
+	request_mode: str,
+	direct_config: Optional[DirectRequestConfig],
 	include_image: bool,
 	threads: int,
 	request_max_attempts: int,
@@ -282,6 +412,13 @@ def process_task(
 ) -> None:
 	dataset_dir = dataset_path_obj.parent
 	stage_label = task_name
+	request_callable: Optional[Callable[[int], str]] = None
+	if request_mode == "direct":
+		if direct_config is None:
+			raise RuntimeError("Direct request configuration missing for request_mode='direct'")
+		def submit_direct(idx: int) -> str:
+			return request_entry_direct(entries[idx], dataset_dir, include_image, direct_config)
+		request_callable = submit_direct
 
 	pending_indices = list(range(len(entries)))
 	last_request_errors: Dict[int, str] = {}
@@ -311,6 +448,7 @@ def process_task(
 			include_image,
 			threads,
 			attempt_label,
+			request_callable=request_callable,
 		)
 
 		for idx, error_message in attempt_errors.items():
@@ -395,7 +533,19 @@ def main() -> None:
 	output_root = Path(args.output_root)
 	output_root.mkdir(parents=True, exist_ok=True)
 
-	client = OpenAI(api_key=api_key, base_url=args.base_url)
+	client: Optional[OpenAI] = None
+	if args.request_mode == "chat":
+		client = OpenAI(api_key=api_key, base_url=args.base_url, timeout=600)
+	direct_config: Optional[DirectRequestConfig] = None
+	if args.request_mode == "direct":
+		direct_config = DirectRequestConfig(
+			base_url=args.base_url,
+			api_key=api_key,
+			model_name=args.model,
+			request_timeout=args.direct_request_timeout,
+			poll_interval=args.direct_poll_interval,
+			max_poll_attempts=args.direct_max_poll_attempts,
+		)
 
 	threads = max(args.threads, 1)
 	data_root = Path(args.data_root)
@@ -423,6 +573,8 @@ def main() -> None:
 				task_dirs,
 				client,
 				args.model,
+				args.request_mode,
+				direct_config,
 				include_image,
 				threads,
 				max(args.max_request_attempts, 1),

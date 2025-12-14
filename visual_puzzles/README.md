@@ -103,6 +103,29 @@ bash scripts/run.sh
 - `--threads`: Number of parallel threads (default: 16)
 - `--max_request_attempts`: Maximum retry attempts (default: 5)
 - `--request_attempt_delay`: Delay between retries in seconds (default: 2)
+- `--request_mode`: Choose `chat` (existing OpenAI chat completions flow) or `direct` (custom REST pipeline)
+- `--direct_request_timeout`, `--direct_poll_interval`, `--direct_max_poll_attempts`: Optional tunables used only when `--request_mode=direct`
+
+### Direct Video Request Mode
+
+Recent updates extend `infer/request_videos.py` with a second generation pathway modeled after `test/new_api.py` + `test/query_new_api.py`.
+
+1. Pass `--request_mode direct` to send handcrafted JSON payloads to `/video/create` immediately.
+2. The script captures the returned `video_id` (task id), then polls `/video/query?id=<video_id>` until `status == "completed"` and finally downloads `video_url`.
+3. All dataset/image handling, retries, and download bookkeeping remain identical to the chat flow, so downstream evaluation scripts continue to work without changes.
+
+Example run (direct mode):
+
+```bash
+python infer/request_videos.py \
+    --model veo_3_1-landscape \
+    --base_url https://jyapi.ai-wx.cn/v1 \
+    --request_mode direct \
+    --tasks color_size color_grid \
+    --data_root data \
+    --output_root outputs/direct_run \
+    --threads 8
+```
 
 ### Extracting Best Frames
 
