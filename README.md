@@ -46,15 +46,15 @@ Moving beyond the traditional paradigms of "Thinking with Text" (e.g., Chain-of-
 
 ## 📌 Contents <!-- omit in toc -->
 
-- [Installation and Dataset Download](#installation-and-dataset-download)
-- [VideoThinkBench](#videothinkbench)
-- [Code and Evaluation](#code-and-evaluation)
-- [Benchmark Results](#benchmark-results)
-- [Takeaways](#takeaways)
-- [Citation](#citation)
+- [🛠️ Installation and Dataset Download](#installation-and-dataset-download)
+- [📚 VideoThinkBench](#videothinkbench)
+- [💻 Code and Evaluation](#code-and-evaluation)
+- [📈 Benchmark Results](#benchmark-results)
+- [💡 Takeaways](#takeaways)
+- [📝 Citation](#citation)
 
 
-## Installation and Dataset Download <!-- omit in toc -->
+## 🛠️ Installation and Dataset Download <!-- omit in toc -->
 
 1. Clone this repository and navigate to Thinking-with-Video folder
    ```bash
@@ -82,7 +82,7 @@ Moving beyond the traditional paradigms of "Thinking with Text" (e.g., Chain-of-
    python check.py Text-Centric_Reasoning > text_centric_stats.txt
    ```
 
-## VideoThinkBench
+## 📚 VideoThinkBench
 
 VideoThinkBench is a comprehensive benchmark for evaluating video generation models' reasoning capabilities, consisting of two main categories:
 
@@ -102,7 +102,7 @@ Adapted from established benchmarks including:
 Dataset is available on [Hugging Face](https://huggingface.co/datasets/fnlp/VideoThinkBench).
 
 
-## Code and Evaluation
+## 💻 Code and Evaluation
 
 ### Vision-Centric Tasks
 
@@ -114,7 +114,7 @@ Dataset is available on [Hugging Face](https://huggingface.co/datasets/fnlp/Vide
 - **All Text-Centric Tasks**: [`TextCentric/`](./TextCentric)
 
 
-## Benchmark Results
+## 📈 Benchmark Results
 
 ### Performance Comparison Across All Tasks
 
@@ -138,8 +138,9 @@ The table below summarizes the accuracy (%) of Sora-2 compared with state-of-the
 
 **Note**: For Sora-2: Eyeballing Puzzles use Major Frame evaluation; Visual Puzzles show the average of Color-Filling and Shape-Drawing tasks; Text-Centric Reasoning tasks use Video evaluation results.
 
+**🔥Leaderboard: [HERE](https://thinking-with-video.github.io/#leaderboard)**
 
-## Takeaways
+## 💡 Takeaways
 
 Our systematic evaluation on VideoThinkBench reveals seven key findings:
 
@@ -158,29 +159,29 @@ Our systematic evaluation on VideoThinkBench reveals seven key findings:
 7. **Analysis of Capability Source**: We systematically analyzed the **source of Sora-2's capabilities**. Sora-2 maintains performance comparable to the original test set on adapted math problems, reducing the likelihood of test set leakage. However, Sora-2 struggles to generate coherent reasoning processes in videos, even when providing correct final answers. Through comparative experiments with Wan 2.5, we speculate that Sora-2's text-centric reasoning ability originates from its **prompt rewriter** model.
 
 
-## Licenses <!-- omit in toc -->
+## ⚖️ Licenses <!-- omit in toc -->
 
 [![Code License](https://img.shields.io/badge/Code%20License-MIT-green.svg)](LICENSE)
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
 
-## Citation
+## 📝 Citation
 
 If you find our work helpful, please consider citing our paper 📝 and starring us ⭐️!
 
 ```bibtex
-@article{tong2025thinkingwithvideo,
-    title={Thinking with Video: Video Generation as a Promising Multimodal Reasoning Paradigm},
-    author={Jingqi Tong and Yurong Mou and Hangcheng Li and Mingzhe Li and Yongzhuo Yang and Ming Zhang and Qiguang Chen and Tianyi Liang and Xiaomeng Hu and Yining Zheng and Xinchi Chen and Jun Zhao and Xuanjing Huang and Xipeng Qiu},
-    journal={arXiv preprint arXiv:2511.04570},
-    year={2025}
+@article{tong2025thinking,
+  title={Thinking with video: Video generation as a promising multimodal reasoning paradigm},
+  author={Tong, Jingqi and Mou, Yurong and Li, Hangcheng and Li, Mingzhe and Yang, Yongzhuo and Zhang, Ming and Chen, Qiguang and Liang, Tianyi and Hu, Xiaomeng and Zheng, Yining and others},
+  journal={arXiv preprint arXiv:2511.04570},
+  year={2025}
 }
 ```
 
 ---
 
-## Star History
+## ⭐ Star History
 
 [![Star History Chart](https://api.star-history.com/svg?repos=tongjingqi/Thinking-with-Video&type=date&legend=top-left)](https://www.star-history.com/#tongjingqi/Thinking-with-Video&type=date&legend=top-left)
 
