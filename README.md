@@ -51,9 +51,10 @@ Moving beyond the traditional paradigms of "Thinking with Text" (e.g., Chain-of-
 - [💻 Code and Evaluation](#code-and-evaluation)
 - [📈 Benchmark Results](#benchmark-results)
 - [💡 Takeaways](#takeaways)
-- [📝 Citation](#citation)
+- [🔎 Citation](#citation)
 
 
+<a id="installation-and-dataset-download"></a>
 ## 🛠️ Installation and Dataset Download <!-- omit in toc -->
 
 1. Clone this repository and navigate to Thinking-with-Video folder
@@ -82,6 +83,7 @@ Moving beyond the traditional paradigms of "Thinking with Text" (e.g., Chain-of-
    python check.py Text-Centric_Reasoning > text_centric_stats.txt
    ```
 
+<a id="videothinkbench"></a>
 ## 📚 VideoThinkBench
 
 VideoThinkBench is a comprehensive benchmark for evaluating video generation models' reasoning capabilities, consisting of two main categories:
@@ -102,6 +104,7 @@ Adapted from established benchmarks including:
 Dataset is available on [Hugging Face](https://huggingface.co/datasets/fnlp/VideoThinkBench).
 
 
+<a id="code-and-evaluation"></a>
 ## 💻 Code and Evaluation
 
 ### Vision-Centric Tasks
@@ -114,6 +117,7 @@ Dataset is available on [Hugging Face](https://huggingface.co/datasets/fnlp/Vide
 - **All Text-Centric Tasks**: [`TextCentric/`](./TextCentric)
 
 
+<a id="benchmark-results"></a>
 ## 📈 Benchmark Results
 
 ### Performance Comparison Across All Tasks
@@ -140,6 +144,7 @@ The table below summarizes the accuracy (%) of Sora-2 compared with state-of-the
 
 **🔥Leaderboard: [HERE](https://thinking-with-video.github.io/#leaderboard)**
 
+<a id="takeaways"></a>
 ## 💡 Takeaways
 
 Our systematic evaluation on VideoThinkBench reveals seven key findings:
@@ -166,7 +171,8 @@ Our systematic evaluation on VideoThinkBench reveals seven key findings:
 This project is licensed under the MIT License - see the LICENSE file for details.
 
 
-## 📝 Citation
+<a id="citation"></a>
+## 🔎 Citation
 
 If you find our work helpful, please consider citing our paper 📝 and starring us ⭐️!
 
