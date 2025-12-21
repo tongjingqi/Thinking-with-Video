@@ -77,6 +77,9 @@ Moving beyond the traditional paradigms of "Thinking with Text" (e.g., Chain-of-
    # upzip the zip datasets under the `Vision-Centric_Reasoning` and `Text-Centric_Reasoning` folders
    bash unzip_dir.sh Vision-Centric_Reasoning
    bash unzip_dir.sh Text-Centric_Reasoning
+   # [Note] you can choose to use the minitest version for evaluation
+   # bash unzip_dir.sh minitest_Vision-Centric_Reasoning
+   # bash unzip_dir.sh minitest_Text-Centric_Reasoning
 
    # check the statistics of the datasets
    python check.py Vision-Centric_Reasoning > vision_centric_stats.txt
@@ -101,7 +104,7 @@ Adapted from established benchmarks including:
 - **Multimodal Math Reasoning**: MathVista, MathVision
 - **Multimodal Understanding**: MMBench, MMMU 
 
-Dataset is available on [Hugging Face](https://huggingface.co/datasets/fnlp/VideoThinkBench).
+Dataset ("minitest"/full test version) is available on [Hugging Face](https://huggingface.co/datasets/fnlp/VideoThinkBench).
 
 
 <a id="code-and-evaluation"></a>
@@ -129,18 +132,19 @@ The table below summarizes the accuracy (%) of Sora-2 compared with state-of-the
 | **Vision-Centric** | Eyeballing-Point | 44.7 | 27.8 | 33.6 | 36.2 |
 | | Eyeballing-Line | 38.0 | 21.0 | 24.0 | 26.3 |
 | | Eyeballing-Shape | 34.5 | 34.5 | 32.5 | 50.5 |
-| | Visual-Color | 67.0 | 73.9 | 79.6 | 85.6 |
-| | Visual-Shape | 64.9 | 92.9 | 97.5 | 68.6 |
+| | Visual-Symmetry | 81.9 | 94.9 | 98.5 | 80.1 |
+| | Visual-Gradient | 51.9 | 83.7 | 66.7 | 69.9 |
+| | Visual-Compositionality | 57.5 | 67.0 | 85.0 | 82.0 |
 | | ARC-AGI-2 | 1.3 | 1.9 | 0.5 | 5.3 |
-| | **Average** | **41.7** | **42.0** | **44.6** | **45.4** |
-| **Text-Centric** | Text-Only Math | 53.6 | 94.8 | 97.2 | 90.0 |
-| | Text-Only General Knowledge | 63.1 | 84.5 | 85.2 | 86.3 |
-| | Multimodal Math | 56.3 | 66.7 | 69.6 | 65.6 |
-| | Multimodal General Knowledge | 49.4 | 83.0 | 80.6 | 82.3 |
-| | **Average** | **55.6** | **82.3** | **83.2** | **81.1** |
-| **Overall Average** | | **47.3** | **58.1** | **60.0** | **59.7** |
+| | **Average** | **44.3** | **47.3** | **48.7** | **50.0** |
+| **Text-Centric** | Text-Only Math | 68.6 | 94.8 | 97.2 | 90.0 |
+| | Text-Only General Knowledge | 65.3 | 84.5 | 85.2 | 86.3 |
+| | Multimodal Math | 61.2 | 66.7 | 69.6 | 65.6 |
+| | Multimodal General Knowledge | 79.1 | 83.0 | 80.6 | 82.3 |
+| | **Average** | **68.6** | **82.3** | **83.2** | **81.1** |
+| **Overall Average** | | **53.1** | **60.0** | **61.2** | **61.3** |
 
-**Note**: For Sora-2: Eyeballing Puzzles use Major Frame evaluation; Visual Puzzles show the average of Color-Filling and Shape-Drawing tasks; Text-Centric Reasoning tasks use Video evaluation results.
+**Note**: For Sora-2: Eyeballing Puzzles use Major Frame evaluation; Visual Puzzles show the average of Color-Filling and Shape-Drawing tasks; Text-Centric Reasoning tasks use Audio evaluation results.
 
 **🔥Leaderboard: [HERE](https://thinking-with-video.github.io/#leaderboard)**
 
