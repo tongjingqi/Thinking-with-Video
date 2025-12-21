@@ -4,6 +4,30 @@ This directory contains code for generating and testing visual puzzle tasks from
 
 Visual puzzles assess pattern recognition, inductive reasoning, and visual logic capabilities through tasks involving color filling and shape drawing.
 
+## Task Categories
+
+**Note:** In the latest version, we categorize the tasks into symmetry, gradient and compositionality tasks, as shown below:
+
+<div align="center">
+<img src="assets/task_categories_new.png" width=100% />
+</div>
+
+### Symmetry Tasks
+- **Hexagonal Color Color Pattern Matching (color_hexagon)**: Fill hexagonal grids with color patterns
+- **Grid Color Pattern Matching (color_grid)**: Complete color grids following pattern rules
+- **Grid Size Pattern Matching (size_grid)**: Draw circles in grids based on size patterns
+- **Reflection Recognition & Application (shape_reflect)**: Draw reflected shapes
+
+### Gradient Tasks
+- **Color Gradient Perception & Application (color_size)**: Fill colors based on object size patterns
+- **Cycle Size Pattern Matching (size_cycle)**: Draw circles in cycle structures based on size patterns
+
+### Compositionality Tasks
+- **Shape Color Pattern Matching (polygon_sides_color)**: Color polygons based on number of sides
+- **Rectangle Height Color Matching (rectangle_height_color)**: Color rectangles based on their heights
+- **Color Mixing Perception & Application (color_overlap_squares)**: Determine colors for overlapping squares
+- **Grid Shape & Size Pattern Matching (shape_size_grid)**: Combine shape and size patterns in grids
+
 ## Quick Start
 
 ```bash
@@ -12,7 +36,9 @@ cd visual_puzzles
 
 # 2. Prepare benchmark data
 mkdir -p data
-cp -r ../VideoThinkBench/Vision-Centric_Reasoning/visual_puzzles/* data/
+# [Note] you can choose to use the minitest version for evaluation
+# cp -r ../VideoThinkBench/Vision-Centric_Reasoning/visual_puzzles/* data/
+cp -r ../VideoThinkBench/minitest_Vision-Centric_Reasoning/visual_puzzles/* data/
 
 # 3. Configure your API key in scripts/run.sh
 # Edit the file and replace YOUR_API_KEY_HERE with your actual API key
@@ -58,36 +84,23 @@ hf download --repo-type dataset OpenMOSS-Team/VideoThinkBench --local-dir VideoT
 
 # 2. Extract the visual puzzles data
 cd VideoThinkBench
-bash unzip_dir.sh Vision-Centric_Reasoning
+# bash unzip_dir.sh Vision-Centric_Reasoning
+# [Note] you can choose to use the minitest version for evaluation
+bash unzip_dir.sh minitest_Vision-Centric_Reasoning 
 
 # 3. Copy to visual_puzzles directory
 cd ..
 mkdir -p visual_puzzles/data
-cp -r VideoThinkBench/Vision-Centric_Reasoning/visual_puzzles/* visual_puzzles/data/
+# cp -r VideoThinkBench/Vision-Centric_Reasoning/visual_puzzles/* visual_puzzles/data/
+cp -r VideoThinkBench/minitest_Vision-Centric_Reasoning/visual_puzzles/* visual_puzzles/data/
 cd visual_puzzles
 ```
-
-## Task Categories
-
-### Color-Filling Tasks (6 types)
-1. **color_size**: Fill colors based on object size patterns
-2. **color_grid**: Complete color grids following pattern rules
-3. **color_hexagon**: Fill hexagonal grids with color patterns
-4. **color_overlap_squares**: Determine colors for overlapping squares
-5. **polygon_sides_color**: Color polygons based on number of sides
-6. **rectangle_height_color**: Color rectangles based on their heights
-
-### Shape-Drawing Tasks (4 types)
-1. **size_grid**: Draw circles in grids based on size patterns
-2. **shape_reflect**: Draw reflected shapes
-3. **shape_size_grid**: Combine shape and size patterns in grids
-4. **size_cycle**: Draw circles in cycle structures based on size patterns
 
 ## Usage
 
 ### Testing with Sora-2
 
-Run inference on all visual puzzle tasks using Sora-2 or compatible video generation models:
+Run inference on all visual puzzle tasks using Sora-2 or other video generation models:
 
 ```bash
 bash scripts/run.sh
@@ -108,7 +121,7 @@ bash scripts/run.sh
 
 ### Direct Video Request Mode
 
-Recent updates extend `infer/request_videos.py` with a second generation pathway modeled after `test/new_api.py` + `test/query_new_api.py`.
+Recent updates extend `infer/request_videos.py` with a second generation pathway. Specifically:
 
 1. Pass `--request_mode direct` to send handcrafted JSON payloads to `/video/create` immediately.
 2. The script captures the returned `video_id` (task id), then polls `/video/query?id=<video_id>` until `status == "completed"` and finally downloads `video_url`.
