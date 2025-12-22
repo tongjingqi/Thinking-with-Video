@@ -119,13 +119,12 @@ Dataset ("minitest"/full test version) is available on [Hugging Face](https://hu
 
 - **All Text-Centric Tasks**: [`TextCentric/`](./TextCentric)
 
-
 <a id="benchmark-results"></a>
 ## 📈 Benchmark Results
 
 ### Performance Comparison Across All Tasks
 
-The table below summarizes the accuracy (%) of Sora-2 compared with state-of-the-art vision-language models across all second-level tasks in VideoThinkBench:
+The table below summarizes the accuracy (%) of Sora-2 compared with SOTA vision-language models across the tasks in VideoThinkBench (full test):
 
 | **Category** | **Task** | **Sora-2** | **Gemini 2.5 Pro** | **GPT5 high** | **Claude Sonnet 4.5** |
 |--------------|----------|------------|-------------------|--------------|---------------------|
@@ -144,9 +143,34 @@ The table below summarizes the accuracy (%) of Sora-2 compared with state-of-the
 | | **Average** | **68.6** | **82.3** | **83.2** | **81.1** |
 | **Overall Average** | | **53.1** | **60.0** | **61.2** | **61.3** |
 
-**Note**: For Sora-2: Eyeballing Puzzles use Major Frame evaluation; Visual Puzzles show the average of Color-Filling and Shape-Drawing tasks; Text-Centric Reasoning tasks use Audio evaluation results.
+**Note**: For Sora-2: Eyeballing Puzzles use Major Frame evaluation; Text-Centric Reasoning tasks use Audio evaluation results.
 
-**🔥Leaderboard: [HERE](https://thinking-with-video.github.io/#leaderboard)**
+### Leaderboard on VideoThinkBench (minitest) (or [HERE](https://thinking-with-video.github.io/#leaderboard))
+
+**Video Generation Models**
+
+| # | Model                  | Average | Eyeballing Point | Eyeballing Line | Eyeballing Shape | Visual Symmetry | Visual Gradient | Visual Compositionality | ARC AGI 2 |
+|:-:|:----------------------:|:-------:|:----------------:|:---------------:|:----------------:|:---------------:|:---------------:|:-----------------------:|:---------:|
+| 1 | Sora 2                 | 40.1    | 50               | 35              | 25               | 80              | 35              | 53                      | 2.8       |
+| 2 | Veo 3.1                | 39.5    | 34               | 24              | 30               | 78              | 40              | 70                      | 0.7       |
+| 3 | MiniMax Hailuo 2.3     | 37.1    | 37               | 34              | 28               | 73              | 45              | 43                      | 0.0       |
+| 4 | doubao-seedance-1-0-pro-250528 | 17.7    | 22               | 24              | 35               | 25              | 10              | 8                       | 0.0       |
+| 5 | Wan2.2-TI2V-5B         | 10.7    | 18               | 10              | 20               | 8               | 10              | 8                       | 0.7       |
+
+**Vision-Language Models**
+
+| # | Model             | Average | Eyeballing Point | Eyeballing Line | Eyeballing Shape | Visual Symmetry | Visual Gradient | Visual Compositionality | ARC AGI 2 |
+|:-:|:-----------------:|:-------:|:----------------:|:---------------:|:----------------:|:---------------:|:---------------:|:-----------------------:|:---------:|
+| 1 | Claude Sonnet 4.5 | 53.2    | 40               | 34              | 60               | 75              | 75              | 83                      | 5.7       |
+| 2 | Gemini 2.5 Pro    | 50.9    | 33               | 23              | 40               | 95              | 95              | 68                      | 2.1       |
+| 3 | GPT5 high         | 50.7    | 39               | 30              | 23               | 98              | 80              | 85                      | 0.0       |
+| 4 | Qwen3-VL-235B-A22B | 43.1    | 24               | 17              | 30               | 93              | 55              | 83                      | 0.0       |
+| 5 | Qwen3-VL-32B      | 42.3    | 33               | 21              | 20               | 85              | 55              | 78                      | 4.1       |
+| 6 | Qwen3-VL-Plus     | 42.0    | 32               | 29              | 30               | 90              | 35              | 78                      | 0.0       |
+
+**Note:**
+* "Eyeballing Point/Line/Shape" refer to Point Tasks, Line Tasks and Shape Tasks in [Eyeballing Puzzles](https://github.com/betmma/VLMPuzzle?tab=readme-ov-file#eyeballing-puzzles). The results are Major Frame evaluation results.
+* "Visual Symmetry/Gradient/Compositionality" refer to the Symmetry Tasks, Gradient Tasks and Compositionality Tasks in [Visual Puzzles](https://github.com/tongjingqi/Thinking-with-Video/tree/main/visual_puzzles).
 
 <a id="takeaways"></a>
 ## 💡 Takeaways
