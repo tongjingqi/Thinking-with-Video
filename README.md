@@ -23,7 +23,7 @@
 ## 🎊 News <!-- omit in toc -->
 
 - [2025.11] Our paper "Thinking with Video: Video Generation as a Promising Multimodal Reasoning Paradigm" has been released on arXiv! 📄 [[Paper](https://arxiv.org/abs/2511.04570)] On HuggingFace, it has achieved "#1 Paper of the Day"!
-- [2025.11] 🔥We release *["minitest"](https://huggingface.co/datasets/OpenMOSS-Team/VideoThinkBench)* of our VideoThinkBench, including 500 test samples of vision-centric tasks and 250 test samples of text-centric tasks.
+- [2025.11] 🔥We release *["minitest"](https://huggingface.co/datasets/OpenMOSS-Team/VideoThinkBench)* of our VideoThinkBench, including 500 test samples of vision-centric tasks and 250 test samples of text-centric tasks. This "minitest" can save your evaluation cost.
 - [2025.12] 🔥We release VideoThinkBench [Leaderboard](https://thinking-with-video.github.io/#leaderboard) that includes different models.
 
 ## 📜 Brief Introduction <!-- omit in toc -->
@@ -127,7 +127,7 @@ Dataset ("minitest"/full test version) is available on [Hugging Face](https://hu
 The table below summarizes the accuracy (%) of Sora-2 compared with SOTA vision-language models across the tasks in VideoThinkBench (full test):
 
 | **Category** | **Task** | **Sora-2** | **Gemini 2.5 Pro** | **GPT5 high** | **Claude Sonnet 4.5** |
-|--------------|----------|------------|-------------------|--------------|---------------------|
+|--------------|----------|:------------:|:-------------------:|:--------------:|:---------------------:|
 | **Vision-Centric** | Eyeballing-Point | 44.7 | 27.8 | 33.6 | 36.2 |
 | | Eyeballing-Line | 38.0 | 21.0 | 24.0 | 26.3 |
 | | Eyeballing-Shape | 34.5 | 34.5 | 32.5 | 50.5 |
@@ -169,8 +169,8 @@ The table below summarizes the accuracy (%) of Sora-2 compared with SOTA vision-
 | 6 | Qwen3-VL-Plus     | 42.0    | 32               | 29              | 30               | 90              | 35              | 78                      | 0.0       |
 
 **Note:**
-* "Eyeballing Point/Line/Shape" refer to Point Tasks, Line Tasks and Shape Tasks in [Eyeballing Puzzles](https://github.com/betmma/VLMPuzzle?tab=readme-ov-file#eyeballing-puzzles). The results are Major Frame evaluation results.
-* "Visual Symmetry/Gradient/Compositionality" refer to the Symmetry Tasks, Gradient Tasks and Compositionality Tasks in [Visual Puzzles](https://github.com/tongjingqi/Thinking-with-Video/tree/main/visual_puzzles).
+* "Eyeballing Point/Line/Shape" refer to Point Tasks, Line Tasks and Shape Tasks in [Eyeballing Puzzles](./VisionCentric/). The results are Major Frame evaluation results.
+* "Visual Symmetry/Gradient/Compositionality" refer to the Symmetry Tasks, Gradient Tasks and Compositionality Tasks in [Visual Puzzles](./visual_puzzles).
 
 <a id="takeaways"></a>
 ## 💡 Takeaways
