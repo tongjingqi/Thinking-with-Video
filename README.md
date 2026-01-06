@@ -157,6 +157,14 @@ The table below summarizes the accuracy (%) of Sora-2 compared with SOTA vision-
 | 4 | doubao-seedance-1-0-pro-250528 | 17.7    | 22               | 24              | 35               | 25              | 10              | 8                       | 0.0       |
 | 5 | Wan2.2-TI2V-5B         | 10.7    | 18               | 10              | 20               | 8               | 10              | 8                       | 0.7       |
 
+**Image Generation Models**
+
+|  #   |               Model                | Average | Eyeballing Point | Eyeballing Line | Eyeballing Shape | Visual Symmetry | Visual Gradient | Visual Compositionality | ARC-AGI-2 |
+| :--: | :--------------------------------: | :-----: | :--------------: | :-------------: | :--------------: | :-------------: | :-------------: | :---------------------: | :-------: |
+|  1   | Nano Banana 2 |  42.5   |        24        |       30        |        35        |       85        |       50        |           73            |   0.71    |
+|  2   |            Seedream 4.5            |  35.0   |        26        |       16        |        30        |       75        |       35        |           63            |     0     |
+|  3   |           GPT image 1.5            |  27.6   |        24        |       15        |        18        |       38        |       50        |           48            |     0     |
+
 **Vision-Language Models**
 
 | # | Model             | Average | Eyeballing Point | Eyeballing Line | Eyeballing Shape | Visual Symmetry | Visual Gradient | Visual Compositionality | ARC AGI 2 |
@@ -169,7 +177,7 @@ The table below summarizes the accuracy (%) of Sora-2 compared with SOTA vision-
 | 6 | Qwen3-VL-Plus     | 42.0    | 32               | 29              | 30               | 90              | 35              | 78                      | 0.0       |
 
 **Note:**
-* "Eyeballing Point/Line/Shape" refer to Point Tasks, Line Tasks and Shape Tasks in [Eyeballing Puzzles](./VisionCentric/). The results are Major Frame evaluation results.
+* "Eyeballing Point/Line/Shape" refer to Point Tasks, Line Tasks and Shape Tasks in [Eyeballing Puzzles](./VisionCentric/). The results of video generation models are *Major Frame* evaluation results.
 * "Visual Symmetry/Gradient/Compositionality" refer to the Symmetry Tasks, Gradient Tasks and Compositionality Tasks in [Visual Puzzles](./visual_puzzles).
 
 <a id="takeaways"></a>
