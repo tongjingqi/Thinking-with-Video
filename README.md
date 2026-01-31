@@ -135,13 +135,16 @@ The table below summarizes the accuracy (%) of Sora-2 compared with SOTA vision-
 | | Visual-Gradient | 51.9 | 83.7 | 66.7 | 69.9 |
 | | Visual-Compositionality | 57.5 | 67.0 | 85.0 | 82.0 |
 | | ARC-AGI-2 | 1.3 | 1.9 | 0.5 | 5.3 |
-| | **Average** | **44.3** | **47.3** | **48.7** | **50.0** |
+| | Maze-Square | 40.0 | 0.0 | 0.0 | 0.0 |
+| | Maze-Hexagon | 0.0 | 0.0 | 0.0 | 0.0 |
+| | Maze-Labyrinth | 0.0 | 0.0 | 0.0 | 0.0 |
+| | **Average** | **35.0** | **33.1** | **34.1** | **35.0** |
 | **Text-Centric** | Text-Only Math | 68.6 | 94.8 | 97.2 | 90.0 |
 | | Text-Only General Knowledge | 65.3 | 84.5 | 85.2 | 86.3 |
 | | Multimodal Math | 61.2 | 66.7 | 69.6 | 65.6 |
 | | Multimodal General Knowledge | 79.1 | 83.0 | 80.6 | 82.3 |
 | | **Average** | **68.6** | **82.3** | **83.2** | **81.1** |
-| **Overall Average** | | **53.1** | **60.0** | **61.2** | **61.3** |
+| **Overall Average** | | **44.6** | **47.1** | **48.1** | **48.2** |
 
 **Note**: For Sora-2: Eyeballing Puzzles use Major Frame evaluation; Text-Centric Reasoning tasks use Audio evaluation results.
 
@@ -149,32 +152,32 @@ The table below summarizes the accuracy (%) of Sora-2 compared with SOTA vision-
 
 **Video Generation Models**
 
-| # | Model                  | Average | Eyeballing Point | Eyeballing Line | Eyeballing Shape | Visual Symmetry | Visual Gradient | Visual Compositionality | ARC AGI 2 |
-|:-:|:----------------------:|:-------:|:----------------:|:---------------:|:----------------:|:---------------:|:---------------:|:-----------------------:|:---------:|
-| 1 | Sora 2                 | 40.1    | 50               | 35              | 25               | 80              | 35              | 53                      | 2.8       |
-| 2 | Veo 3.1                | 39.5    | 34               | 24              | 30               | 78              | 40              | 70                      | 0.7       |
-| 3 | MiniMax Hailuo 2.3     | 37.1    | 37               | 34              | 28               | 73              | 45              | 43                      | 0.0       |
-| 4 | doubao-seedance-1-0-pro-250528 | 17.7    | 22               | 24              | 35               | 25              | 10              | 8                       | 0.0       |
-| 5 | Wan2.2-TI2V-5B         | 10.7    | 18               | 10              | 20               | 8               | 10              | 8                       | 0.7       |
+| # | Model                  | Average | Eyeballing Point | Eyeballing Line | Eyeballing Shape | Visual Symmetry | Visual Gradient | Visual Compositionality | ARC AGI 2 | Maze-Square | Maze-Hexagon | Maze-Labyrinth |
+|:-:|:----------------------:|:-------:|:----------------:|:---------------:|:----------------:|:---------------:|:---------------:|:-----------------------:|:---------:|:-----------:|:------------:|:--------------:|
+| 1 | Sora 2                 | 31.6    | 50               | 35              | 25               | 80              | 35              | 53                      | 2.8       | 35.3        | 0.0          | 0.0            |
+| 2 | Veo 3.1                | 27.7    | 34               | 24              | 30               | 78              | 40              | 70                      | 0.7       | 0.0         | 0.0          | 0.0            |
+| 3 | MiniMax Hailuo 2.3     | 26.0    | 37               | 34              | 28               | 73              | 45              | 43                      | 0.0       | 0.0         | 0.0          | 0.0            |
+| 4 | doubao-seedance-1-0-pro-250528 | 12.4    | 22               | 24              | 35               | 25              | 10              | 8                       | 0.0       | 0.0         | 0.0          | 0.0            |
+| 5 | Wan2.2-TI2V-5B         | 7.5     | 18               | 10              | 20               | 8               | 10              | 8                       | 0.7       | 0.0         | 0.0          | 0.0            |
 
 **Image Generation Models**
 
-|  #   |               Model                | Average | Eyeballing Point | Eyeballing Line | Eyeballing Shape | Visual Symmetry | Visual Gradient | Visual Compositionality | ARC-AGI-2 |
-| :--: | :--------------------------------: | :-----: | :--------------: | :-------------: | :--------------: | :-------------: | :-------------: | :---------------------: | :-------: |
-|  1   | Nano Banana 2 |  42.5   |        24        |       30        |        35        |       85        |       50        |           73            |   0.71    |
-|  2   |            Seedream 4.5            |  35.0   |        26        |       16        |        30        |       75        |       35        |           63            |     0     |
-|  3   |           GPT image 1.5            |  27.6   |        24        |       15        |        18        |       38        |       50        |           48            |     0     |
+|  #   |               Model                | Average | Eyeballing Point | Eyeballing Line | Eyeballing Shape | Visual Symmetry | Visual Gradient | Visual Compositionality | ARC-AGI-2 | Maze-Square | Maze-Hexagon | Maze-Labyrinth |
+| :--: | :--------------------------------: | :-----: | :--------------: | :-------------: | :--------------: | :-------------: | :-------------: | :---------------------: | :-------: | :---------: | :----------: | :------------: |
+|  1   | Nano Banana 2 |  29.8   |        24        |       30        |        35        |       85        |       50        |           73            |   0.71    |     0.0     |     0.0      |      0.0       |
+|  2   |            Seedream 4.5            |  24.5   |        26        |       16        |        30        |       75        |       35        |           63            |     0     |     0.0     |     0.0      |      0.0       |
+|  3   |           GPT image 1.5            |  19.3   |        24        |       15        |        18        |       38        |       50        |           48            |     0     |     0.0     |     0.0      |      0.0       |
 
 **Vision-Language Models**
 
-| # | Model             | Average | Eyeballing Point | Eyeballing Line | Eyeballing Shape | Visual Symmetry | Visual Gradient | Visual Compositionality | ARC AGI 2 |
-|:-:|:-----------------:|:-------:|:----------------:|:---------------:|:----------------:|:---------------:|:---------------:|:-----------------------:|:---------:|
-| 1 | Claude Sonnet 4.5 | 53.2    | 40               | 34              | 60               | 75              | 75              | 83                      | 5.7       |
-| 2 | Gemini 2.5 Pro    | 50.9    | 33               | 23              | 40               | 95              | 95              | 68                      | 2.1       |
-| 3 | GPT5 high         | 50.7    | 39               | 30              | 23               | 98              | 80              | 85                      | 0.0       |
-| 4 | Qwen3-VL-235B-A22B | 43.1    | 24               | 17              | 30               | 93              | 55              | 83                      | 0.0       |
-| 5 | Qwen3-VL-32B      | 42.3    | 33               | 21              | 20               | 85              | 55              | 78                      | 4.1       |
-| 6 | Qwen3-VL-Plus     | 42.0    | 32               | 29              | 30               | 90              | 35              | 78                      | 0.0       |
+| # | Model             | Average | Eyeballing Point | Eyeballing Line | Eyeballing Shape | Visual Symmetry | Visual Gradient | Visual Compositionality | ARC AGI 2 | Maze-Square | Maze-Hexagon | Maze-Labyrinth |
+|:-:|:-----------------:|:-------:|:----------------:|:---------------:|:----------------:|:---------------:|:---------------:|:-----------------------:|:---------:|:-----------:|:------------:|:--------------:|
+| 1 | Claude Sonnet 4.5 | 37.3    | 40               | 34              | 60               | 75              | 75              | 83                      | 5.7       | 0.0         | 0.0          | 0.0            |
+| 2 | Gemini 2.5 Pro    | 35.6    | 33               | 23              | 40               | 95              | 95              | 68                      | 2.1       | 0.0         | 0.0          | 0.0            |
+| 3 | GPT5 high         | 35.5    | 39               | 30              | 23               | 98              | 80              | 85                      | 0.0       | 0.0         | 0.0          | 0.0            |
+| 4 | Qwen3-VL-235B-A22B | 30.2    | 24               | 17              | 30               | 93              | 55              | 83                      | 0.0       | 0.0         | 0.0          | 0.0            |
+| 5 | Qwen3-VL-32B      | 29.6    | 33               | 21              | 20               | 85              | 55              | 78                      | 4.1       | 0.0         | 0.0          | 0.0            |
+| 6 | Qwen3-VL-Plus     | 29.4    | 32               | 29              | 30               | 90              | 35              | 78                      | 0.0       | 0.0         | 0.0          | 0.0            |
 
 **Note:**
 * "Eyeballing Point/Line/Shape" refer to Point Tasks, Line Tasks and Shape Tasks in [Eyeballing Puzzles](./VisionCentric/). The results of video generation models are *Major Frame* evaluation results.
