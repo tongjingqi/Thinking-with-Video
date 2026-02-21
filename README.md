@@ -1,6 +1,6 @@
 <div align="center">
 
-# Thinking with Video: Video Generation as a Promising Multimodal Reasoning Paradigm
+# [CVPR 2026] Thinking with Video: Video Generation as a Promising Multimodal Reasoning Paradigm
 
 </div>
 
@@ -22,7 +22,8 @@
 
 ## 🎊 News <!-- omit in toc -->
 
-- [2025.11] Our paper "Thinking with Video: Video Generation as a Promising Multimodal Reasoning Paradigm" has been released on arXiv! 📄 [[Paper](https://arxiv.org/abs/2511.04570)] On HuggingFace, it has achieved "#1 Paper of the Day"!
+- [2026.02] 🔥🔥*Our work has been accepted by* **CVPR 2026**! 🎉🎉🎉
+- [2025.11] Our paper "Thinking with Video: Video Generation as a Promising Multimodal Reasoning Paradigm" has been released on arXiv! 📄 [[Paper](https://arxiv.org/abs/2511.04570)] On HuggingFace, it has achieved "#1 Paper of the Day" and also "#1 Paper of the Month"!
 - [2025.11] 🔥We release *["minitest"](https://huggingface.co/datasets/OpenMOSS-Team/VideoThinkBench)* of our VideoThinkBench, including 500 test samples of vision-centric tasks and 250 test samples of text-centric tasks. This "minitest" can save your evaluation cost.
 - [2025.12] 🔥We release VideoThinkBench [Leaderboard](https://thinking-with-video.github.io/#leaderboard) that includes different models.
 
