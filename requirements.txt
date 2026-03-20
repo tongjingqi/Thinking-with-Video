@@ -10,3 +10,5 @@ httpx[socks]
 fire
 python-dotenv
 moviepy
+dotenv
+tqdm

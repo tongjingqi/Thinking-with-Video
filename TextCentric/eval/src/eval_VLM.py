@@ -6,7 +6,7 @@ import re
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime
 from pathlib import Path
-from typing import Any, Dict, List, Tuple
+from typing import Any, Dict, List, Optional, Tuple
 
 from dotenv import load_dotenv
 from openai import OpenAI
@@ -116,6 +116,40 @@ def build_prompt(
 	)
 
 
+def try_manual_evaluation(entry: Dict[str, Any], final_prediction: Any, answer_value: str) -> Optional[bool]:
+	if not isinstance(final_prediction, str):
+		return None
+
+	pred_token = final_prediction.strip()
+	answer_token = answer_value.strip()
+	if not pred_token or not answer_token:
+		return None
+	if re.search(r"\s", pred_token) or re.search(r"\s", answer_token):
+		return None
+
+	if pred_token.isdigit() and answer_token.isdigit():
+		is_correct = pred_token == answer_token
+		entry['evaluation_correctness'] = 'Yes' if is_correct else 'No'
+		entry['evaluation_raw'] = 'Manual token comparison (digit exact match)'
+		entry['evaluation_method'] = 'manual_token_compare'
+		return is_correct
+
+	if pred_token.isalpha() and answer_token.isalpha() and len(pred_token) == 1 and len(answer_token) == 1:
+		is_correct = pred_token.lower() == answer_token.lower()
+		entry['evaluation_correctness'] = 'Yes' if is_correct else 'No'
+		entry['evaluation_raw'] = 'Manual token comparison (single-letter option)'
+		entry['evaluation_method'] = 'manual_token_compare'
+		return is_correct
+
+	if pred_token.isalpha() and answer_token.isalpha() and pred_token.lower() == answer_token.lower():
+		entry['evaluation_correctness'] = 'Yes'
+		entry['evaluation_raw'] = 'Manual token comparison (case-insensitive)'
+		entry['evaluation_method'] = 'manual_token_compare'
+		return True
+
+	return None
+
+
 def evaluate_entries(
 	entries: List[Dict[str, Any]],
 	client: OpenAI,
@@ -149,22 +183,11 @@ def evaluate_entries(
 				entry['final_prediction'] = final_prediction
 				answer_raw = entry.get('correct_answer', entry.get('answer', ''))
 				answer_value = str(answer_raw).strip()
-				handled_manually = False
-				if isinstance(final_prediction, str) and (
-					(final_prediction.isalpha() and answer_value.isalpha())
-					or (final_prediction.isdigit() and answer_value.isdigit())
-				):
-					pred_token = final_prediction.strip()
-					answer_token = answer_value.strip()
-					if pred_token and answer_token and not re.search(r"\s", pred_token) and not re.search(r"\s", answer_token):
-						is_correct = pred_token.lower() == answer_token.lower()
-						entry['evaluation_correctness'] = 'Yes' if is_correct else 'No'
-						entry['evaluation_raw'] = 'Manual token comparison (case-insensitive)'
-						entry['evaluation_method'] = 'manual_token_compare'
-						if is_correct:
-							correct_count += 1
-						handled_manually = True
-				if handled_manually:
+
+				manual_result = try_manual_evaluation(entry, final_prediction, answer_value)
+				if manual_result is not None:
+					if manual_result:
+						correct_count += 1
 					progress.update()
 					continue
 
