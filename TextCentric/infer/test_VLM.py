@@ -228,7 +228,11 @@ def request_entry(
 
     messages = build_messages(prompt_text, image_b64)
 
-    response = client.chat.completions.create(model=model_name, messages=messages)
+    response = client.chat.completions.create(
+        model=model_name,
+        messages=messages,
+        temperature=0.0
+    )
 
     raw_content = response.choices[0].message.content or ""
     entry["response_raw"] = raw_content

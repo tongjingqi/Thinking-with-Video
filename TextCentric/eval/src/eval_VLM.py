@@ -120,28 +120,33 @@ def try_manual_evaluation(entry: Dict[str, Any], final_prediction: Any, answer_v
 	if not isinstance(final_prediction, str):
 		return None
 
-	pred_token = final_prediction.strip()
-	answer_token = answer_value.strip()
-	if not pred_token or not answer_token:
-		return None
-	if re.search(r"\s", pred_token) or re.search(r"\s", answer_token):
+	prediction_text = final_prediction.strip()
+	answer_text = answer_value.strip()
+	if not prediction_text or not answer_text:
 		return None
 
-	if pred_token.isdigit() and answer_token.isdigit():
-		is_correct = pred_token == answer_token
+	# First, try perfect match directly.
+	if prediction_text == answer_text:
+		entry['evaluation_correctness'] = 'Yes'
+		entry['evaluation_raw'] = 'Manual exact match'
+		entry['evaluation_method'] = 'manual_token_compare'
+		return True
+
+	if prediction_text.isdigit() and answer_text.isdigit():
+		is_correct = prediction_text == answer_text
 		entry['evaluation_correctness'] = 'Yes' if is_correct else 'No'
 		entry['evaluation_raw'] = 'Manual token comparison (digit exact match)'
 		entry['evaluation_method'] = 'manual_token_compare'
 		return is_correct
 
-	if pred_token.isalpha() and answer_token.isalpha() and len(pred_token) == 1 and len(answer_token) == 1:
-		is_correct = pred_token.lower() == answer_token.lower()
+	if prediction_text.isalpha() and answer_text.isalpha() and len(prediction_text) == 1 and len(answer_text) == 1:
+		is_correct = prediction_text.lower() == answer_text.lower()
 		entry['evaluation_correctness'] = 'Yes' if is_correct else 'No'
 		entry['evaluation_raw'] = 'Manual token comparison (single-letter option)'
 		entry['evaluation_method'] = 'manual_token_compare'
 		return is_correct
 
-	if pred_token.isalpha() and answer_token.isalpha() and pred_token.lower() == answer_token.lower():
+	if prediction_text.isalpha() and answer_text.isalpha() and prediction_text.lower() == answer_text.lower():
 		entry['evaluation_correctness'] = 'Yes'
 		entry['evaluation_raw'] = 'Manual token comparison (case-insensitive)'
 		entry['evaluation_method'] = 'manual_token_compare'
