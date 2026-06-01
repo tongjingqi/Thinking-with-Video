@@ -217,6 +217,17 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 If you find our work helpful, please consider citing our paper 📝 and starring us ⭐️!
 
 ```bibtex
+@InProceedings{Tong_2026_CVPR,
+    author    = {Tong, Jingqi and Mou, Yurong and Li, Hangcheng and Li, Mingzhe and Yang, Yongzhuo and Zhang, Ming and Chen, Qiguang and Liang, Tianyi and Hu, Xiaomeng and Zheng, Yining and Chen, Xinchi and Zhao, Jun and Huang, Xuanjing and Qiu, Xipeng},
+    title     = {Thinking with Video: Video Generation as a Promising Multimodal Reasoning Paradigm},
+    booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+    month     = {June},
+    year      = {2026},
+    pages     = {41121-41129}
+}
+```
+
+```bibtex
 @article{tong2025thinking,
   title={Thinking with video: Video generation as a promising multimodal reasoning paradigm},
   author={Tong, Jingqi and Mou, Yurong and Li, Hangcheng and Li, Mingzhe and Yang, Yongzhuo and Zhang, Ming and Chen, Qiguang and Liang, Tianyi and Hu, Xiaomeng and Zheng, Yining and others},
