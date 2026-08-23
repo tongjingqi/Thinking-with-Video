@@ -230,7 +230,7 @@ If you find our work helpful, please consider citing our paper 📝 and starring
 
 ## ⭐ Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=tongjingqi/Thinking-with-Video&type=date&legend=top-left)](https://www.star-history.com/#tongjingqi/Thinking-with-Video&type=date&legend=top-left)
+[![Star History Chart](https://star-history.dera.page/svg?repos=tongjingqi/Thinking-with-Video&type=date&legend=top-left)](https://star-history.dera.page/#tongjingqi/Thinking-with-Video&type=date&legend=top-left)
 
 ---
 
